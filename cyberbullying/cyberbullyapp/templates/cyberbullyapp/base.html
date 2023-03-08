@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tweet Sentiment Analysis</title>
+    <h2>Is this tweet , harming the community??</h2>
+    <style>
+      form {
+        margin: 0 auto;
+        width: 40%;
+      }
+      
+      button {
+        display: block;
+        margin: 0 auto;
+      }
+
+      #output{
+        margin: 0 auto;
+        width: 15%;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <form action="{% url 'sentiment_view' %}" method="post">
+      <label for="tweet">tweet:</label>
+      {% csrf_token %}
+      <input type="text" id="text_value" name="text_value" style="width: 500px;height: 50px;" value="{{ text_value|default:'' }}"><br><br>
+      <button type="submit">Submit</button>
+      
+    </form>
+  </body>
+  <p id="output">{{ output_sentiment }}</p>
+</html>
